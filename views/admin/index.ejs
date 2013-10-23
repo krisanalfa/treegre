@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>treegre&trade;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="treegre Chat Server">
+    <meta name="author" content="Sun Strike Team">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-ie7.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/fontomizer.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand">treegre&trade;</div>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="#userManagement" data-toggle="tab">
+                  <i class="icon-group"></i> User Management
+                </a>
+              </li> <!-- User Management -->
+              <li>
+                <a href="#super" data-toggle="tab">
+                  <i class="icon-key"></i> Superuser Management
+                </a>
+              </li> <!-- Superuser Management -->
+              <li>
+                <a href="#" id="logout">
+                  <i class="icon-signout"></i> Logout
+                </a>
+              </li> <!-- Logout -->
+            </ul> <!-- .nav -->
+          </div> <!-- .nav-collapse -->
+        </div> <!-- .container -->
+      </div> <!-- .navbar-inner -->
+    </div> <!-- .navbar -->
+
+    <div class="container well">
+      <div class="tab-content">
+        <div class="tab-pane fade in active row" id="userManagement">
+          <div class="span6">
+            <h3>User Management</h3>
+            <div id="userContainer">
+              <% for (var i in data) { %>
+                <table class="table table-bordered table-condensed table-hover">
+                  <tr>
+                    <td>Name</td>
+                    <td><%- data[i].name %></td>
+                  </tr>
+                  <tr>
+                    <td>Username</td>
+                    <td><%- data[i].username %></td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td><%- data[i].email %></td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td><%- data[i].password %></td>
+                  </tr>
+                </table>
+              <% } %>
+            </div>
+            <div class='pagination pagination-centered'></div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="super">
+          <h3>Super Admin</h3>
+          <div>
+            <form id="rootControl" method="POST" action="">
+              <div class="control-group oldPassword">
+                <label class="control-label">Old Password</label>
+                <input type="password" name="old" id="oldPassword">
+              </div>
+              <div class="control-group newPassword">
+                <label class="control-label">New Password</label>
+                <input type="password" name="new" id="newPassword">
+              </div>
+              <div class="control-group verPassword">
+                <label class="control-label">Verify Password</label>
+                <input type="password" name="ver" id="verPassword">
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-primary" href="#"><i class="icon-edit icon-large"></i>Save</button>
+              <a id="cancelButton" class="btn btn-danger" href="#cancel"><i class="icon-minus-sign"></i>Cancel</a></center>
+              <hr>
+              <div id="alert" class="alert alert-block alert-error fade in">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4 class="alert-heading">Oh snap! You got an error!</h4>
+                <div id="alertMessage"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ==========================================================
+    Placed at the end of the document so the pages load faster
+    Do not change the order, or page will break an error      -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+    <script src="/js/jquery-md5.js"></script>
+    <script src="/js/jquery.bootpag.min.js"></script>
+    <script src="/js/custom/admin.js"></script>
+  </body>
+</html>

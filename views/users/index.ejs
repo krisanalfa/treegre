@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>treegre&trade;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="treegre Chat Server">
+    <meta name="author" content="Sun Strike Team">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-ie7.min.css" rel="stylesheet">
+    <link href="/css/chat.css" rel="stylesheet">
+    <link href="/css/jquery.cssemoticons.min.css" rel="stylesheet">
+    <link href="/css/fontomizer.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand"><%- user.name %></div>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href=<%- "../users/" + user.username %>>
+                  <i class="icon-comments"></i> Chat
+                </a>
+              </li> <!-- Chat -->
+              <li id="profile-nav">
+                <a href=<%- "../profile/" + user.username %>>
+                  <i class="icon-user"></i> My Profile
+                </a>
+              </li> <!-- Profile -->
+              <li id="dropdown-nav" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i> Setting <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href=<%- "../settings/" + user.username %>><i class="icon-cog"></i> Account Setting</a></li>
+                  <li><a id="logout" href="#"><i class="icon-signout"></i> Logout</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Quick Link</li>
+                  <li><a href="https://plus.google.com"><i class="icon-google-plus"></i> Google Plus</a></li>
+                  <li><a href="https://twitter.com"><i class="icon-twitter"></i> Twitter</a></li>
+                  <li><a href="https://www.facebook.com"><i class="icon-facebook"></i> Facebook</a></li>
+                </ul>
+              </li> <!-- .dropdown -->
+            </ul> <!-- .nav -->
+          </div> <!-- .nav-collapse -->
+        </div> <!-- .container -->
+      </div> <!-- .navbar-inner -->
+    </div> <!-- .navbar -->
+
+    <div class="container">
+      <div class="well row">
+        <div class="span7">
+          <input id="name" type="text" value=<%- "'" + user.name + "'"%> style="display: none" readonly>
+          <input id="username" type="text" value=<%- "'" + user.username + "'"%> style="display: none" readonly>
+          <h3>Chat</h3>
+          <div class="input-append">
+            <input id="text" type="text" placeholder="Text your chat here">
+            <button id="chatButton" class="btn btn-info" type="button"><i class="icon-comments"></i> Chat</button>
+          </div>
+          <div style="padding-bottom: 10px">
+            <button id="clearChat" class="btn btn-danger" type="button"><i class="icon-trash"></i> Clear Chat</button>
+          </div>
+          <!-- .junkAlert -->
+          <div id="junkAlert" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Warn!</h3>
+            </div>
+            <div class="modal-body">
+              <p>Junk Detected!!!
+                <br>You have been warned! If you input same text for your chat more than three times, we consider that you're a junker, if you ignore this warn, we gonna kick your ass straight to the login page!
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">I got it.</button>
+              <button id="badJunker" class="btn btn-warning">Whatever!</button>
+            </div>
+          </div>
+          <!-- .junkAlert -->
+
+          <!-- .bitchPlease -->
+          <div id="bitchPlease" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Bitch, please!</h3>
+            </div>
+            <div class="modal-body">
+              <p>
+                <center>
+                  <img src="/img/bitch-please.jpg">
+                </center>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Go to hell!</button>
+            </div>
+          </div>
+          <!-- .bitchPlease -->
+          <div class="well chatBox"></div>
+        </div>
+        <div class="span4 pull-right">
+          <h3>User Online</h3>
+          <div class="well userOnline"></div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ==========================================================
+    Placed at the end of the document so the pages load faster
+    Do not change the order, or page will break an error      -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+    <script src="/js/bootstrap-affix.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery.cssemoticons.min.js"></script>
+    <script src="/js/custom/chat.js"></script>
+  </body>
+</html>

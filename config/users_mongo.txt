@@ -1,0 +1,38 @@
+use treegre;
+
+/** users indexes **/
+db.getCollection("users").ensureIndex({ "_id": NumberInt(1) },[]);
+
+db.users.remove();
+
+/** users records **/
+db.getCollection("users").insert({
+  "_id": ObjectId("514042b55b77593e5f000000"),
+  "bio": "Programmer and Counter Hacker",
+  "name": "Krisan Alfa Timur",
+  "nim": "2009140508",
+  "password": "56aed7e7485ff03d5605b885b86e947e",
+  "username": "alfa"
+});
+db.getCollection("users").insert({
+  "_id": ObjectId("514042ca5b7759b25f000000"),
+  "bio": "Pentester",
+  "name": "Omega Hanggara",
+  "nim": "2009140507",
+  "password": "c6d6bd7ebf806f43c76acc3681703b81",
+  "username": "omega"
+});
+db.getCollection("users").insert({
+  "_id": ObjectId("514042dc5b77591c60000000"),
+  "bio": "Programmer",
+  "name": "Angela Crisanti",
+  "nim": "2012141974",
+  "password": "f4f068e71e0d87bf0ad51e6214ab84e9",
+  "username": "angel"
+});
+db.getCollection("users").insert({
+  "_id": ObjectId("51418acd5b77592404000000"),
+   "password": "f291caaa8226b6ccbceb9ac54ef3c03c",
+   "username": "root"
+});
+

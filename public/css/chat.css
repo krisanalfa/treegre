@@ -1,0 +1,12 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.chatBox {
+  height: 300px;
+  max-height: 300px;
+  overflow: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

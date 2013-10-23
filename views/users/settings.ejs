@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>treegre&trade;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="treegre Chat Server">
+    <meta name="author" content="Sun Strike Team">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-ie7.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/fontomizer.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand"><%- user.name %></div>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li>
+                <a href=<%- "../users/" + user.username %>>
+                  <i class="icon-comments"></i> Chat
+                </a>
+              </li> <!-- Chat -->
+              <li id="profile-nav">
+                <a href=<%- "../profile/" + user.username %>>
+                  <i class="icon-user"></i> My Profile
+                </a>
+              </li> <!-- Profile -->
+              <li id="dropdown-nav" class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i> Setting <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="active"><a href=<%- user.username %>><i class="icon-cog"></i> Account Setting</a></li>
+                  <li><a id="logout" href="#"><i class="icon-signout"></i> Logout</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Quick Link</li>
+                  <li><a href="https://plus.google.com"><i class="icon-google-plus"></i> Google Plus</a></li>
+                  <li><a href="https://twitter.com"><i class="icon-twitter"></i> Twitter</a></li>
+                  <li><a href="https://www.facebook.com"><i class="icon-facebook"></i> Facebook</a></li>
+                </ul>
+              </li> <!-- .dropdown -->
+            </ul> <!-- .nav -->
+          </div> <!-- .nav-collapse -->
+        </div> <!-- .container -->
+      </div> <!-- .navbar-inner -->
+    </div> <!-- .navbar -->
+
+    <div class="container">
+      <div class="well">
+        <h3>Account Setting</h3>
+        <form method="POST" action=<%- "/update/" + user.username %>>
+          <fieldset class="control-group row">
+            <div class="controls span12">
+              <label class="control-label">Unique ID</label>
+              <input id="name" class="span3" maxlength="30" type="text" name="_id" value=<%- "'" + user._id + "'" %> readonly>
+              <label class="control-label">Full Name</label>
+              <input id="name" class="span3" maxlength="30" type="text" name="name" value=<%- "'" + user.name + "'" %>>
+              <label class="control-label">Email</label>
+              <input id="name" class="span3" maxlength="30" type="text" name="email" value=<%- "'" + user.email + "'" %>>
+              <label class="control-label" >User Name</label>
+              <input id="username" class="span2" maxlength="20" type="text" name="username" value=<%- user.username %>>
+              <label class="control-label">Bio</label>
+              <textarea id="bio" class="span6" rows="5" name="bio" style="resize: none;"><%- user.bio %></textarea>
+              <div>
+                <button type="submit" class="btn btn-primary" href="#"><i class="icon-edit"></i> Save Changes</button>
+                <button id="change-user-password" class="btn btn-info" href="#">
+                  <i class="icon-lock"></i> Change Password
+                </button>
+                <a id="cancelButton" class="btn btn-danger" href="#cancel"><i class="icon-minus-sign"></i> Cancel</a>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div> <!-- /container -->
+
+    <div id="changePassword" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Change Password</h3>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action=<%- "/change-password/" + user.username %>>
+          <fieldset class="control-group">
+            <div class="controls">
+              <label class="control-label" style="display: none">Unique ID</label>
+              <input type="text" name="_id" value=<%- "'" + user._id + "'" %> readonly style="display: none">
+              <label class="control-label" style="display: none">User Name</label>
+              <input type="text" name="username" value=<%- user.username %> readonly style="display: none">
+              <label class="control-label">Old Password</label>
+              <input id="name" type="password" name="old">
+              <label class="control-label">New Password</label>
+              <input id="name" type="password" name="new">
+              <label class="control-label" >Verify Password</label>
+              <input id="username" type="password" name="ver">
+              <hr>
+              <button id="change-password" type="submit" class="btn btn-info" href="#">
+                <i class="icon-edit icon-large"></i> Change Password
+              </button>
+              <button id="cancel" class="btn btn-danger" href="#">
+                <i class="icon-minus-sign"></i> Cancel
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <!-- Le javascript
+    ==========================================================
+    Placed at the end of the document so the pages load faster
+    Do not change the order, or page will break an error      -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+    <script src="/js/bootstrap-affix.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/custom/user-settings.js"></script>
+  </body>
+</html>

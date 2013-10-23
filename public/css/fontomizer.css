@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Gabriela';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gabriela'), local('Gabriela-Regular'), url('../font/gabriela.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url('../font/ubuntu-mono.woff') format('woff');
+}
+
+body {
+  font-family: "Gabriela";
+}
+
+code,
+pre {
+  padding: 0 3px 2px;
+  font-family: Monaco, Menlo, Consolas, "Ubuntu Mono", monospace;
+  font-size: 12px;
+  color: #333333;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: "Gabriela";
+}
+
+.navbar-search .search-query {
+  padding: 4px 14px;
+  margin-bottom: 0;
+  font-family: "Gabriela";
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}

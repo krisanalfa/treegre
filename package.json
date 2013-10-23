@@ -1,0 +1,33 @@
+{
+  "name": "treegre",
+  "version": "0.3.0",
+  "description": "Chat Server With Express and Socket.IO",
+  "main": "treegre.js",
+  "private": true,
+  "dependencies": {
+    "express": "~3.1.2",
+    "ejs": "~0.8.4",
+    "socket.io": "~0.9.16",
+    "colors": "~0.6.2",
+    "response": "~0.1.0",
+    "request": "~2.14.0",
+    "connect": "~2.7.11",
+    "mongoskin": "~0.5.0",
+    "connect-mongodb": "~1.1.5",
+    "mongodb": "~1.2.14",
+    "crypto": "0.0.3",
+    "nodemailer": "~0.4.4",
+    "simple-recaptcha": "0.0.3"
+  },
+  "scripts": {
+    "start": "supervisor --ignore views,public --quiet treegre.js"
+  },
+  "keywords": [
+    "treegre",
+    "chat",
+    "express",
+    "socket.io"
+  ],
+  "author": "Krisan Alfa Timur <krisan47@gmail.com>",
+  "license": "BSD"
+}
