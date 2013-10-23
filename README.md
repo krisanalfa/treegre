@@ -1,6 +1,4 @@
-# treegre version 0.3.0
-
----
+# treegre
 
 ### Quick Intro
 
